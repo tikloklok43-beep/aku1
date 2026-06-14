@@ -139,8 +139,8 @@ export const chartData = [
 ];
 
 export const skillsData = [
-  { name: "Writing", value: 35, color: "#C4A8E8" },
-  { name: "Music", value: 25, color: "#F5C6D9" },
-  { name: "Web Dev", value: 25, color: "#FDDCCA" },
-  { name: "Design", value: 15, color: "#C8EAD8" },
+  { name: "Bahasa Arab", value: 98, color: "#C4A8E8" },
+  { name: "Guru/Pengajar", value: 90, color: "#F5C6D9" },
+  { name: "Web Dev", value: 65, color: "#FDDCCA" },
+  { name: "pembuat e-book", value: 70, color: "#C8EAD8" },
 ];
