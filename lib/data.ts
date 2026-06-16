@@ -4,7 +4,8 @@ export const books: Book[] = [
   {
     id: "1",
     title: "Jejak Cahaya",
-    description: "Kumpulan syair tentang perjalanan spiritual seorang muslimah muda dalam menemukan makna hidupnya.",
+    description:
+      "Kumpulan syair tentang perjalanan spiritual seorang muslimah muda dalam menemukan makna hidupnya.",
     cover: "📗",
     genre: "Poetry",
     year: 2023,
@@ -12,7 +13,8 @@ export const books: Book[] = [
   {
     id: "2",
     title: "Bintang di Langit Hati",
-    description: "Novel remaja islami yang mengisahkan persahabatan tulus dan cinta yang dijaga dengan iman.",
+    description:
+      "Novel remaja islami yang mengisahkan persahabatan tulus dan cinta yang dijaga dengan iman.",
     cover: "📘",
     genre: "Novel",
     year: 2022,
@@ -20,7 +22,8 @@ export const books: Book[] = [
   {
     id: "3",
     title: "Mutiara Hikmah",
-    description: "Kumpulan cerita pendek penuh inspirasi yang mengajarkan nilai-nilai kehidupan islami.",
+    description:
+      "Kumpulan cerita pendek penuh inspirasi yang mengajarkan nilai-nilai kehidupan islami.",
     cover: "📕",
     genre: "Short Stories",
     year: 2024,
@@ -66,7 +69,8 @@ export const projects: Project[] = [
   {
     id: "1",
     title: "Taman Baca Digital",
-    description: "Platform perpustakaan digital islami untuk anak-anak dengan fitur interaktif dan animasi menarik.",
+    description:
+      "Platform perpustakaan digital islami untuk anak-anak dengan fitur interaktif dan animasi menarik.",
     image: "📚",
     url: "#",
     tags: ["Next.js", "React", "Tailwind"],
@@ -74,7 +78,8 @@ export const projects: Project[] = [
   {
     id: "2",
     title: "Murotal Al-Qur'an",
-    description: "Murotal Al-Qur'an yang dilantunkan dengan tartil, mengikuti kaidah tajwid dan makhraj yang benar. Murotal membantu pendengar membaca, menghafal, dan memahami Al-Qur'an dengan lebih baik, sekaligus menjadi sarana untuk mendekatkan diri kepada Allah dan menumbuhkan ketenangan hati.",
+    description:
+      "Murotal Al-Qur'an yang dilantunkan dengan tartil, mengikuti kaidah tajwid dan makhraj yang benar. Murotal membantu pendengar membaca, menghafal, dan memahami Al-Qur'an dengan lebih baik, sekaligus menjadi sarana untuk mendekatkan diri kepada Allah dan menumbuhkan ketenangan hati.",
     image: "🎵",
     url: "#",
     tags: ["React", "Node.js", "MongoDB"],
@@ -82,7 +87,8 @@ export const projects: Project[] = [
   {
     id: "3",
     title: "Quiz Quran",
-    description: "Aplikasi kuis interaktif untuk belajar Al-Quran dengan gamifikasi dan sistem reward yang menarik.",
+    description:
+      "Aplikasi kuis interaktif untuk belajar Al-Quran dengan gamifikasi dan sistem reward yang menarik.",
     image: "📖",
     url: "#",
     tags: ["Vue.js", "Firebase", "PWA"],
@@ -90,7 +96,8 @@ export const projects: Project[] = [
   {
     id: "4",
     title: "Wedding Invitation",
-    description: "Template undangan pernikahan digital premium dengan animasi dan fitur RSVP interaktif.",
+    description:
+      "Template undangan pernikahan digital premium dengan animasi dan fitur RSVP interaktif.",
     image: "💌",
     url: "#",
     tags: ["HTML", "CSS", "Vanilla JS"],
@@ -103,7 +110,8 @@ export const achievements: Achievement[] = [
     title: "Safinatun Najah",
     organization: "Sertifikat Safinatun Najah",
     year: 2024,
-    description: "Sertifikat Safinatun Najah merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu fiqih, khususnya materi yang bersumber dari kitab Safinatun Najah",
+    description:
+      "Sertifikat Safinatun Najah merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu fiqih, khususnya materi yang bersumber dari kitab Safinatun Najah",
     icon: "🏆",
     color: "clay-purple",
   },
@@ -112,7 +120,8 @@ export const achievements: Achievement[] = [
     title: "Tuhfatul Athfal",
     organization: "Sertifikat Tuhfatul Athfal",
     year: 2023,
-    description: "Sertifikat Tuhfatul Athfal merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu tajwid, khususnya materi yang bersumber dari kitab Tuhfatul Athfal",
+    description:
+      "Sertifikat Tuhfatul Athfal merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu tajwid, khususnya materi yang bersumber dari kitab Tuhfatul Athfal",
     icon: "🥇",
     color: "clay-pink",
   },
@@ -121,26 +130,28 @@ export const achievements: Achievement[] = [
     title: "Hifzul Mutun",
     organization: "Sertifikat Hifzul Mutun",
     year: 2023,
-    description: "Sertifikat Hifzul Mutun merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu tajwid, khususnya materi yang bersumber dari kitab Hifzul Mutun",
+    description:
+      "Sertifikat Hifzul Mutun merupakan bukti resmi atas partisipasi, kelulusan, atau pencapaian seseorang dalam mempelajari ilmu tajwid, khususnya materi yang bersumber dari kitab Hifzul Mutun",
     icon: "🌟",
     color: "clay-peach",
   },
 ];
 
 export const chartData = [
-  { month: "Jan", books: 2, nasyid: 5, web: 1, awards: 0 },
-  { month: "Feb", books: 3, nasyid: 7, web: 2, awards: 1 },
-  { month: "Mar", books: 1, nasyid: 4, web: 3, awards: 0 },
-  { month: "Apr", books: 4, nasyid: 8, web: 2, awards: 1 },
-  { month: "May", books: 2, nasyid: 6, web: 4, awards: 2 },
-  { month: "Jun", books: 5, nasyid: 9, web: 3, awards: 1 },
-  { month: "Jul", books: 3, nasyid: 11, web: 5, awards: 0 },
-  { month: "Aug", books: 6, nasyid: 8, web: 4, awards: 2 },
+  { month: "Jan", books: 2, Arabic: 5, web: 1, awards: 0 },
+  { month: "Feb", books: 3, Arabic: 7, web: 2, awards: 1 },
+  { month: "Mar", books: 1, Arabic: 4, web: 3, awards: 0 },
+  { month: "Apr", books: 4, Arabic: 8, web: 2, awards: 1 },
+  { month: "May", books: 2, Arabic: 6, web: 4, awards: 2 },
+  { month: "Jun", books: 5, Arabic: 9, web: 3, awards: 1 },
+  { month: "Jul", books: 3, Arabic: 11, web: 5, awards: 0 },
+  { month: "Aug", books: 6, Arabic: 8, web: 4, awards: 2 },
 ];
 
 export const skillsData = [
-  { name: "Bahasa Arab", value: 98, color: "#C4A8E8" },
+  { name: "Bahasa Arab", value: 95, color: "#C4A8E8" },
   { name: "Guru/Pengajar", value: 90, color: "#F5C6D9" },
   { name: "Web Dev", value: 65, color: "#FDDCCA" },
-  { name: "pembuat e-book", value: 70, color: "#C8EAD8" },
+  { name: "Pembuat e-book", value: 75, color: "#C8EAD8" },
 ];
+

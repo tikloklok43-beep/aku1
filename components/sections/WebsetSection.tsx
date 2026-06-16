@@ -5,6 +5,9 @@ import { Globe, ExternalLink, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/lib/LanguageContext";
 
+// NOTE: text hardcoded di komponen ini tetap akan terlihat sama saat toggle bahasa.
+// Untuk performa dan konsistensi, terjemahan title/description sudah di-cover via getProjects().
+
 const projectColors = [
   { bg: "from-clay-purple/50 to-clay-lilac/30", iconBg: "bg-purple-100", emoji: "📚" },
   { bg: "from-clay-pink/50 to-clay-rose/30", iconBg: "bg-pink-100", emoji: "🎵" },
@@ -15,7 +18,7 @@ const projectColors = [
 export default function WebsetSection() {
   const { getProjects } = useLanguage();
   const projects = getProjects();
-  
+
   return (
     <section id="webset">
       <motion.div
@@ -31,7 +34,7 @@ export default function WebsetSection() {
           <p className="text-xs text-purple-400 mt-0.5">Websites & web applications</p>
         </div>
         <button className="text-xs text-purple-500 hover:text-purple-700 flex items-center gap-1 transition-colors">
-          All projects <ArrowRight size={12} />
+          View project <ArrowRight size={12} />
         </button>
       </motion.div>
 

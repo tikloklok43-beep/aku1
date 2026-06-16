@@ -1,9 +1,13 @@
-# TODO - Mia Portfolio UI Redesign
+# TODO
 
-- [ ] 1) Add IND/ARA language buttons to Header next to moon mode toggle
-- [ ] 2) Update Sidebar menu order + icons to match requested list
-- [ ] 3) Adjust HeroSection to match: Welcome banner + floating laptop avatar + bubbles (Awards/Books/Nasyid)
-- [ ] 4) Refine StatsSection cards: exact labels/values + 3D/neomorphism + percentage styling
-- [ ] 5) Run dev server and visually verify
-- [ ] 6) Fix any build/lint/type issues that appear
+- [x] Update `components/dashboard/Sidebar.tsx`: ganti hardcoded teks menjadi `t.*` dari `useLanguage()`
+- [ ] Update `components/sections/WebsetSection.tsx`: ganti heading/label/badge hardcoded menjadi `t.*`
+
+
+
+- [ ] Update `components/sections/NasyidSection.tsx`: ganti heading/label hardcoded menjadi `t.*`
+- [ ] Update `components/sections/AchievementsSection.tsx`: ganti heading/label hardcoded menjadi `t.*`
+- [ ] Update `components/sections/StatsSection.tsx`: pastikan title card seluruhnya pakai `t.*`
+- [ ] Tambahkan key translasi yang belum ada di `lib/translations.ts` (sertakan versi ID dan AR; pakai icon/emoji jika perlu)
+- [ ] Pastikan TS tidak error dan UI di HP terlihat berubah saat toggle bahasa
 
