@@ -28,6 +28,8 @@ type Section =
   | "settings";
 
 export default function Home() {
+  // Placeholder: future profile edit modal routing can be wired here.
+
   const [active, setActive] = useState<Section>("dashboard");
   const [darkMode, setDarkMode] = useState(false);
   const { language, setLanguage, t } = useLanguage();

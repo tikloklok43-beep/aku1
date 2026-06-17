@@ -38,6 +38,7 @@ export const nasyids: Nasyid[] = [
     album: "Nur di Hati",
     cover: "🎵",
     duration: "4:23",
+    audioUrl: "https://mp3tourl.com/audio/1781657242681-8388365e-13c8-4e1b-909f-8bc9867b8eda.mp3",
   },
   {
     id: "2",
@@ -46,6 +47,7 @@ export const nasyids: Nasyid[] = [
     album: "Rindu Madinah",
     cover: "🎶",
     duration: "3:55",
+    audioUrl: "https://mp3tourl.com/audio/1781657822676-fe9e447d-f2f4-4686-ad96-b8daab6da50f.mp3"
   },
   {
     id: "3",
@@ -54,6 +56,7 @@ export const nasyids: Nasyid[] = [
     album: "Keluarga Bahagia",
     cover: "🎼",
     duration: "5:10",
+    audioUrl: "https://mp3tourl.com/audio/1781657943273-5e22657d-da9c-498a-b228-6b6802b038c3.mp3"
   },
   {
     id: "4",
@@ -62,6 +65,7 @@ export const nasyids: Nasyid[] = [
     album: "Nur di Hati",
     cover: "🌙",
     duration: "4:41",
+    audioUrl: "https://mp3tourl.com/audio/1781658161695-b0f57b60-3256-453a-9d43-723f628f36a0.mp3"
   },
 ];
 

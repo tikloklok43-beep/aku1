@@ -31,7 +31,9 @@ export interface Nasyid {
   album: string;
   cover: string;
   duration: string;
+  audioUrl: string;
 }
+
 
 export interface Project {
   id: string;

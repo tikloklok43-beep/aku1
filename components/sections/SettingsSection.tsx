@@ -1,9 +1,21 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Bell, Moon, Globe, Lock, Palette, User, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Bell, Lock, Palette, User, ChevronRight, X as XIcon } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
+
+type ProfileData = {
+  name: string;
+  email: string;
+  bio: string;
+  visibility: "public" | "private";
+  dark: boolean;
+  lang: "id" | "ar";
+  emailNotif: boolean;
+  pushNotif: boolean;
+  twoFactor: boolean;
+};
 
 export default function SettingsSection() {
   const { t } = useLanguage();
@@ -43,6 +55,38 @@ export default function SettingsSection() {
 
   const flip = (key: string) => setToggles((prev) => ({ ...prev, [key]: !prev[key] }));
 
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [profile, setProfile] = useState<ProfileData>({
+    name: "Iski",
+    email: "iski@gmail.com",
+    bio: "",
+    visibility: "public",
+    dark: false,
+    lang: "id",
+    emailNotif: true,
+    pushNotif: false,
+    twoFactor: false,
+  });
+
+  useEffect(() => {
+    setProfile((p) => ({
+      ...p,
+      dark: Boolean(toggles.dark),
+      emailNotif: Boolean(toggles.emailNotif),
+      pushNotif: Boolean(toggles.pushNotif),
+      twoFactor: Boolean(toggles["2fa"]),
+    }));
+  }, [toggles.dark, toggles.emailNotif, toggles.pushNotif, toggles["2fa"]]);
+
+  const dirty = useMemo(() => {
+    return (
+      profile.name !== "Iski" ||
+      profile.email !== "iski@gmail.com" ||
+      profile.bio !== "" ||
+      profile.visibility !== "public"
+    );
+  }, [profile]);
+
   return (
     <section id="settings">
       <motion.div
@@ -69,10 +113,14 @@ export default function SettingsSection() {
             🌸
           </div>
           <div className="flex-1">
-            <h3 className="font-display font-semibold text-purple-900 dark:text-purple-100 text-sm">Mia</h3>
-            <p className="text-xs text-purple-400">mia@example.com</p>
+            <h3 className="font-display font-semibold text-purple-900 dark:text-purple-100 text-sm">Iski</h3>
+            <p className="text-xs text-purple-400">iski@gmail.com</p>
           </div>
-          <button className="inline-flex items-center gap-1.5 text-xs font-medium text-purple-600 bg-clay-lavender/50 px-3 py-1.5 rounded-xl hover:bg-clay-lavender/80 transition-colors">
+          <button
+            onClick={() => setIsEditOpen(true)}
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-purple-600 bg-clay-lavender/50 px-3 py-1.5 rounded-xl hover:bg-clay-lavender/80 transition-colors"
+            aria-haspopup="dialog"
+          >
             <User size={11} />
             {t.editProfile}
           </button>
@@ -131,6 +179,161 @@ export default function SettingsSection() {
           </motion.div>
         ))}
       </div>
+
+      {/* Edit Profile Modal */}
+    <AnimatePresence>
+      {isEditOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50"
+        >
+          <div
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+            onClick={() => setIsEditOpen(false)}
+            aria-hidden="true"
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 18, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 18, scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            className="relative z-10 mx-auto mt-16 w-full max-w-lg"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="clay-card rounded-3xl p-5">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-display font-semibold text-purple-900 dark:text-purple-100 text-sm">
+                    {t.editProfile}
+                  </h3>
+                  <p className="text-xs text-purple-400 mt-0.5">Edit semua menu setting (demo)</p>
+                </div>
+                <button
+                  onClick={() => setIsEditOpen(false)}
+                  className="w-9 h-9 rounded-2xl clay-card flex items-center justify-center text-purple-500 hover:text-purple-700 transition-colors"
+                  aria-label="Close"
+                >
+                  <XIcon size={16} />
+                </button>
+              </div>
+
+              <form
+                className="space-y-3"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  // Simpan demo: dianggap tersimpan di state lokal
+                  setIsEditOpen(false);
+                }}
+              >
+                <div className="grid grid-cols-1 gap-3">
+                  <label className="text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Name
+                    <input
+                      value={profile.name}
+                      onChange={(e) => setProfile((p) => ({ ...p, name: e.target.value }))}
+                      className="mt-1 w-full h-9 rounded-2xl clay-card px-3 text-xs"
+                    />
+                  </label>
+
+                  <label className="text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Email
+                    <input
+                      value={profile.email}
+                      onChange={(e) => setProfile((p) => ({ ...p, email: e.target.value }))}
+                      className="mt-1 w-full h-9 rounded-2xl clay-card px-3 text-xs"
+                    />
+                  </label>
+
+                  <label className="text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Bio
+                    <textarea
+                      value={profile.bio}
+                      onChange={(e) => setProfile((p) => ({ ...p, bio: e.target.value }))}
+                      className="mt-1 w-full min-h-20 rounded-2xl clay-card px-3 py-2 text-xs"
+                    />
+                  </label>
+
+                  <label className="text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Profile Visibility
+                    <select
+                      value={profile.visibility}
+                      onChange={(e) => setProfile((p) => ({ ...p, visibility: e.target.value as ProfileData["visibility"] }))}
+                      className="mt-1 w-full h-9 rounded-2xl clay-card px-3 text-xs"
+                    >
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                    </select>
+                  </label>
+
+                  <label className="flex items-center justify-between gap-4 text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Dark Mode
+                    <input
+                      type="checkbox"
+                      checked={toggles.dark}
+                      onChange={() => flip("dark")}
+                    />
+                  </label>
+
+                  <label className="flex items-center justify-between gap-4 text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Email Notifications
+                    <input
+                      type="checkbox"
+                      checked={toggles.emailNotif}
+                      onChange={() => flip("emailNotif")}
+                    />
+                  </label>
+
+                  <label className="flex items-center justify-between gap-4 text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Push Notifications
+                    <input
+                      type="checkbox"
+                      checked={toggles.pushNotif}
+                      onChange={() => flip("pushNotif")}
+                    />
+                  </label>
+
+                  <label className="flex items-center justify-between gap-4 text-xs font-medium text-purple-700 dark:text-purple-200">
+                    Two-Factor Auth
+                    <input
+                      type="checkbox"
+                      checked={toggles["2fa"]}
+                      onChange={() => flip("2fa")}
+                    />
+                  </label>
+                </div>
+
+                <div className="flex items-center justify-end gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditOpen(false)}
+                    className="h-9 px-4 rounded-2xl clay-card text-xs text-purple-600 hover:text-purple-700 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!dirty}
+                    className={`h-9 px-4 rounded-2xl shadow-clay text-xs font-semibold transition-colors ${
+                      dirty
+                        ? "bg-gradient-to-r from-clay-purple to-clay-lilac text-white hover:scale-[1.02]"
+                        : "bg-purple-200 dark:bg-purple-800 text-purple-400 cursor-not-allowed"
+                    }`}
+                  >
+                    Save
+                  </button>
+                </div>
+              </form>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+
     </section>
   );
 }
+

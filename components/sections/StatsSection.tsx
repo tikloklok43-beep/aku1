@@ -8,7 +8,7 @@ const stats = [
   {
     id: 1,
     title: "Buku Diterbitkan",
-    value: 12,
+    value: 5,
     growth: 33,
     icon: BookOpen,
     emoji: "📚",
@@ -23,7 +23,7 @@ const stats = [
   {
     id: 2,
     title: "Koleksi Nasyid",
-    value: 48,
+    value: 4,
     growth: 18,
     icon: Music,
     emoji: "🎵",
@@ -38,7 +38,7 @@ const stats = [
   {
     id: 3,
     title: "Proyek Web",
-    value: 24,
+    value: 6,
     growth: 50,
     icon: Globe,
     emoji: "🌐",

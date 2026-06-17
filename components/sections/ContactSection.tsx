@@ -46,7 +46,7 @@ export default function ContactSection() {
             </h3>
             <div className="space-y-3">
               {[
-                { icon: Mail, label: "Email", value: "mia@example.com", color: "text-purple-500" },
+                { icon: Mail, label: "Email", value: "iski@gmail.com", color: "text-purple-500" },
                 { icon: MapPin, label: "Location", value: "Jakarta, Indonesia", color: "text-pink-500" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3">

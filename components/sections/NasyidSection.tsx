@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import { motion } from "framer-motion";
 import { Play, Pause, Music, ArrowRight, Heart, MoreHorizontal } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
@@ -11,20 +12,53 @@ export default function NasyidSection() {
   const [playing, setPlaying] = useState<string | null>(null);
   const [liked, setLiked] = useState<Set<string>>(new Set());
 
-  const togglePlay = (id: string) => setPlaying(playing === id ? null : id);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const togglePlay = (id: string) => {
+    setPlaying((prev) => (prev === id ? null : id));
+  };
+
   const toggleLike = (id: string) => {
     const next = new Set(liked);
     next.has(id) ? next.delete(id) : next.add(id);
     setLiked(next);
   };
 
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (!playing) {
+      audioRef.current.pause();
+      return;
+    }
+
+    const track = nasyids.find((t) => t.id === playing);
+    if (!track) return;
+
+    if (audioRef.current.src !== track.audioUrl) {
+      audioRef.current.src = track.audioUrl;
+    }
+
+    // Play may be blocked by browser policies or fail due to network/CORS.
+    // Catch to avoid unhandled rejection errors in Next dev overlay.
+    audioRef.current
+      .play()
+      .catch(() => {
+        // no-op: user gesture required by browser; UI state already updated via `playing`
+      });
+  }, [playing, nasyids]);
+
   return (
     <section id="nasyid">
+
+      <audio ref={audioRef} className="hidden" preload="metadata" />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
         className="flex items-center justify-between mb-4"
+
       >
         <div>
           <h2 className="font-display font-semibold text-purple-900 dark:text-purple-100 text-lg">
